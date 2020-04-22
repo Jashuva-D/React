@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {render} from 'react-dom';
-import ProductsTable from './MyComponents/FileUpload';
+import FileUpload from './MyComponents/FileUpload';
 
 render(
-    <ProductsTable/>,
+    <FileUpload/>,
     document.getElementById("root")
   );

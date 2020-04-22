@@ -13,7 +13,8 @@ interface State {
     page : number,
     rowsperpage : number
 }
-
+//style= {{ tableLayout:"fixed", width: 2000,overflow:"hidden",border:1}
+//style= {{ tableLayout:"fixed", width: 2000,overflow:"hidden"}}
 
 class SimpleTable extends React.Component<Props,State>{
 
@@ -40,8 +41,8 @@ class SimpleTable extends React.Component<Props,State>{
         return (              
             <div>
                     <Paper style={{width : "100%" }}>
-                    <TableContainer component={Paper} style = {{ maxHeight: 1000}}>
-                    <Table stickyHeader aria-label="sticky table" style= {{ tableLayout:"fixed", width: 2000,overflow:"hidden",border:1}}>
+                    <TableContainer component={Paper} style = {{ maxHeight: 600}}>
+                    <Table stickyHeader aria-label="sticky table">
                         <TableHead >
                             <TableRow >
                                 {headers.map((header) => (
@@ -54,7 +55,7 @@ class SimpleTable extends React.Component<Props,State>{
                             <TableRow>
                                 {
                                     row.map((cell) => (
-                                        <TableCell style= {{ tableLayout:"fixed", width: 2000,overflow:"hidden"}}>
+                                        <TableCell >
                                             {cell }
                                         </TableCell>
                                     ))
@@ -64,6 +65,7 @@ class SimpleTable extends React.Component<Props,State>{
                         }
                         </TableBody>
                     </Table>
+                    </TableContainer>
                     <TablePagination
                             rowsPerPageOptions={[5, 10, 25]}
                             component="div"
@@ -73,7 +75,6 @@ class SimpleTable extends React.Component<Props,State>{
                             onChangePage={this.handleChangePage()}
                             onChangeRowsPerPage={this.handleChangeRowsPerPage()}
                         />
-                    </TableContainer>
                 </Paper>
                 </div>
         )
@@ -82,8 +83,6 @@ class SimpleTable extends React.Component<Props,State>{
     handleChangePage = () => (
         event: unknown, page : number
         ) => {
-            debugger;
-        
         this.setState({
             page : page
         })
